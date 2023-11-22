@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React from 'react'
+import { HashRouter as Router, Route, Switch } from 'react-router-dom'
+import JsonViewer from './JsonViewer'
+import TopicList from './TopicList'
+import topics from './Topics'
+import Quiz from './Quiz'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <div className="App">
+        <h1>Quiz App</h1>
+        <Switch>
+          <Route path="/topics/:topicId/:subtopicId">
+            <JsonViewer topics={topics} />
+          </Route>
+          <Route path="/">
+            <TopicList topics={topics} />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  )
 }
 
-export default App;
+export default App
