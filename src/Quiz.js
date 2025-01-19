@@ -14,6 +14,9 @@ const Quiz = ({ jsonData }) => {
         handleNextQuestion();
       } else if (event.key === 'ArrowLeft') {
         handlePrevQuestion();
+      } else if (event.key === 'Tab') {
+        event.preventDefault(); // Prevent default tab behavior
+        handleNextQuestion();
       }
     };
 
